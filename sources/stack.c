@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 13:09:41 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/08 14:34:00 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/08 15:06:13 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,8 @@ int	peak(t_stack *stack)
 
 int	is_empty(t_stack *stack)
 {
-	int				value;
-
 	if (stack == 0)
-		return (MIN_VALUE);
+		return (1);
 	if (stack->length == 0)
 		return (1);
 	return (0);
