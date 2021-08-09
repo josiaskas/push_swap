@@ -3,25 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:18:19 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/08 23:23:40 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/09 14:53:34 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-bool	*ft_is_inside_stack(t_stack *stack, int nbr)
+bool	ft_is_inside_stack(t_stack *stack, int nbr)
 {
 	t_stack_node	*node;
 	int				i;
+	int				*value;
 
 	node = stack->head;
 	i = 0;
 	while (i < stack->length)
 	{
-		if (node->content == nbr)
+		value = (int *)node->content;
+		if (*value == nbr)
 			return (true);
 		i++;
 		node = node->next;
@@ -29,7 +31,7 @@ bool	*ft_is_inside_stack(t_stack *stack, int nbr)
 	return (false);
 }
 
-static bool	parse_and_push(char *s, t_stack *stack)
+bool	parse_and_push_int(char *s, t_stack *stack)
 {
 	long	value;
 	int		*content;
@@ -40,7 +42,7 @@ static bool	parse_and_push(char *s, t_stack *stack)
 		return (false);
 	if (s[0] == '-' || s[0] == '+')
 		s++;
-	//*value = ft_atol(s);
+	value = ft_atol(s);
 	if (value > MAX_INT_VALUE || value < MIN_INT_VALUE)
 		return (false);
 	i = 0;
@@ -57,7 +59,7 @@ static bool	parse_and_push(char *s, t_stack *stack)
 	return (true);
 }
 
-bool	**parse_unique_string(char *string, t_stack *stack)
+bool	parse_unique_string(char *string, t_stack *stack)
 {
 	char	**words;
 	int		size;
@@ -70,12 +72,13 @@ bool	**parse_unique_string(char *string, t_stack *stack)
 		return (false);
 	while (words[size])
 		size++;
-	while (i < size)
+	i = size - 1;
+	while (i >= 0)
 	{
-		if (!parse_and_push(words[i], stack))
+		if (!parse_and_push_int(words[i], stack))
 			return (false);
 		free(words[i]);
-		i++;
+		i--;
 	}
 	free(words);
 	return (true);
@@ -90,7 +93,7 @@ bool	parse_args(int size, char *words[], t_stack *stack)
 	i = size;
 	while (i > 0)
 	{
-		if (!parse_and_push(words[i], stack))
+		if (!parse_and_push_int(words[i], stack))
 		{
 			return (false);
 		}

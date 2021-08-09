@@ -5,7 +5,7 @@ INCLUDES = -I./includes
 
 #source
 SRCS_DIR = sources/
-SRCS = test.c
+SRCS = test.c stack.c stack_utils.c parse_args.c
 
 SRCS_PREFIXED = $(addprefix $(SRCS_DIR), $(SRCS))
 
@@ -16,7 +16,8 @@ all : $(NAME)
 
 $(NAME): $(OBJS)
 	@$(MAKE) re -C ./libft
-	@$(CC) $(CFLAGS) $(OBJS) -L./libft -lft  -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -L./libft -lft -o $(NAME)
+	@echo $(NAME) est fait
 
 clean :
 	$(MAKE) clean -C ./libft

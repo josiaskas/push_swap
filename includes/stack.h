@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 12:52:41 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/08 23:12:51 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/09 14:33:50 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define MIN_INT_VALUE -2147483648
 # define MAX_INT_VALUE 2147483647
 # include <stdbool.h>
+# include <stdlib.h>
 typedef struct s_stack_node
 {
 	void				*content;
