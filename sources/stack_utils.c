@@ -6,21 +6,21 @@
 /*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 14:35:03 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/08 16:10:35 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/08 22:42:16 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/stack.h"
 
-int	swap(t_stack *stack)
+bool	swap(t_stack *stack)
 {
 	t_stack_node	*first;
 	t_stack_node	*second;
 
 	if (stack == 0)
-		return (0);
+		return (false);
 	if (stack->length <= 1)
-		return (0);
+		return (false);
 	first = stack->head;
 	second = first->next;
 	stack->head = second;
@@ -28,36 +28,36 @@ int	swap(t_stack *stack)
 	second->next = first;
 	if (stack->length == 2)
 		stack->bottom = first;
-	return (1);
+	return (true);
 }
 
-int	rotate(t_stack *stack)
+bool	rotate(t_stack *stack)
 {
 	t_stack_node	*first;
 	t_stack_node	*second;
 
 	if (stack == 0)
-		return (0);
+		return (false);
 	if (stack->length <= 1)
-		return (0);
+		return (true);
 	if (stack->length == 2)
 		return (swap(stack));
 	first = stack->head;
 	second = first->next;
 	stack->head = second;
 	stack->bottom = first;
-	return (1);
+	return (true);
 }
 
-int	reverse_rotate(t_stack *stack)
+bool	reverse_rotate(t_stack *stack)
 {
 	t_stack_node	*last;
 	t_stack_node	*before_last;
 
 	if (stack == 0)
-		return (0);
+		return (false);
 	if (stack->length <= 1)
-		return (0);
+		return (false);
 	if (stack->length == 2)
 		return (swap(stack));
 	last = stack->bottom;
@@ -66,14 +66,31 @@ int	reverse_rotate(t_stack *stack)
 		before_last = before_last->next;
 	stack->bottom = before_last;
 	stack->head = last;
-	return (1);
+	return (true);
 }
 
-int	start_iteration(t_stack *stack)
+int	*map_stack(t_stack *stack, int (*apply)(void *, int index))
 {
-	if (stack == 0)
+	int				*results;
+	t_stack_node	*node;
+	int				i;
+
+	i = 0;
+	if (!stack)
 		return (0);
-	stack->current = 0;
+	if (!stack->length)
+		return (0);
+	results = malloc(sizeof(int) * (stack->length));
+	if (!results)
+		return (0);
+	node = stack->head;
+	while (i < stack->length)
+	{
+		results[i] = apply(node->content, i);
+		node = node->next;
+		i++;
+	}
+	return (results);
 }
 
 t_stack_node	*get_next(t_stack *stack)
@@ -90,5 +107,7 @@ t_stack_node	*get_next(t_stack *stack)
 		node = node->next;
 		i++;
 	}
+	if (stack->current < stack->length)
+		stack->current++;
 	return (node);
 }

@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 13:09:41 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/08 15:06:13 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/08 23:14:56 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ t_stack	*create_stack(void)
 	return (stack);
 }
 
-int	*push(t_stack *stack, int value)
+bool	push(t_stack *stack, void *content)
 {
 	t_stack_node	*node;
 
-	if (stack == 0)
-		return (0);
+	if (!stack)
+		return (false);
 	node = (t_stack_node *)malloc(sizeof(t_stack_node));
-	if (node == 0)
-		return (0);
-	node->value = value;
+	if (!node)
+		return (false);
+	node->content = content;
 	if (stack->length == 0)
 	{
 		stack->bottom = node;
@@ -48,53 +48,65 @@ int	*push(t_stack *stack, int value)
 		stack->length++;
 	}
 	stack->head = node;
-	return (1);
+	return (true);
 }
 
-int	pop(t_stack *stack)
+void	*pop(t_stack *stack)
 {
 	t_stack_node	*node;
-	int				value;
+	void			*content;
 
-	if (stack == 0)
-		return (MIN_VALUE);
-	if (stack->length == 0)
-		return (MIN_VALUE);
+	if (!stack)
+		return (0);
+	if (!stack->length)
+		return (0);
+	content = 0;
 	node = stack->head;
 	if (stack->length == 1)
 	{
-		value = node->value;
+		content = node->content;
 		stack->bottom = 0;
 		stack->head = 0;
 	}
 	if (stack->length > 1)
 	{	
-		value = node->value;
+		content = node->content;
 		stack->bottom->next = stack->head->next;
 		stack->head = stack->head->next;
 	}
 	stack->length--;
 	free(node);
-	return (value);
+	return (content);
 }
 
-int	peak(t_stack *stack)
+void	*peak(t_stack *stack)
 {
-	int				value;
+	void	*content;
 
-	if (stack == 0)
-		return (MIN_VALUE);
-	if (stack->length == 0)
-		return (MIN_VALUE);
-	value = stack->head->value;
-	return (value);
+	if (!stack)
+		return (0);
+	if (!stack->length)
+		return (0);
+	content = stack->head->content;
+	return (content);
 }
 
-int	is_empty(t_stack *stack)
+bool	for_each_s(t_stack *stack, void (*apply)(void *, int index))
 {
-	if (stack == 0)
-		return (1);
-	if (stack->length == 0)
-		return (1);
-	return (0);
+	t_stack_node	*node;
+	int				i;
+
+	i = 0;
+	if (!stack)
+		return (false);
+	if (!stack->length)
+		return (false);
+	node = stack->head;
+	while (i < stack->length)
+	{
+		apply(node->content, i);
+		node = node->next;
+		i++;
+	}
+	return (true);
 }
