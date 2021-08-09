@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:18:19 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/09 14:53:34 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/09 16:27:44 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,19 @@ bool	parse_unique_string(char *string, t_stack *stack)
 
 bool	parse_args(int size, char *words[], t_stack *stack)
 {
-	int	i;
+	int		i;
+	bool	state;
+	char	*string;
 
 	if (size == 1)
-		return (parse_unique_string(words[1], stack));
+	{
+		string = ft_strtrim(words[1], " ");
+		if (!string)
+			return (false);
+		state = parse_unique_string(string, stack);
+		free (string);
+		return (state);
+	}
 	i = size;
 	while (i > 0)
 	{

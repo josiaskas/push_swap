@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 12:52:41 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/09 14:33:50 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/09 16:40:44 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void			*pop(t_stack *stack);
 // return the head value without destroying the node (error = MIN_VALUE)
 void			*peak(t_stack *stack);
 // return an Array of results of callback function without changing the stack
-void			*map_s(t_stack *stack, int (*apply)(void *, int index));
-// apply function on every element f(*content, index)
+int				*map_stack(t_stack *stack, int (*apply)(void *, int index));
+	// apply function on every element f(*content, index)
 bool			for_each_s(t_stack *stack, void (*apply)(void *, int i));
 // (greedy) get the next ellement according to current value in t_stack
 t_stack_node	*get_next(t_stack *stack);
