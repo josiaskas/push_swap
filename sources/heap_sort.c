@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stats.c                                            :+:      :+:    :+:   */
+/*   heap_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/09 19:22:37 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/09 20:33:31 by jkasongo         ###   ########.fr       */
+/*   Created: 2021/08/11 17:34:07 by jkasongo          #+#    #+#             */
+/*   Updated: 2021/08/11 17:46:15 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// swap two integers
+// swap two integers, take pointers
 void	ft_swap_i(int *a, int *b)
 {
 	int	temp;
@@ -59,23 +59,4 @@ void	heapSort(int arr[], int n)
 		heapify(arr, i, 0);
 		i--;
 	}
-}
-
-int	ft_find_median_value(int arr[], int n)
-{
-	int	median;
-	int	a;
-	int	b;
-
-	heapSort(arr, n);
-	median = 0;
-	if ((n % 2) != 0)
-		median = arr[((n - 1) / 2)];
-	else
-	{
-		a = arr[(n / 2) - 1];
-		b = arr[(n / 2)];
-		median = (a + b) / 2;
-	}
-	return (median);
 }

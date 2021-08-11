@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 14:25:08 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/09 20:33:07 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/11 18:40:45 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,16 @@ int	main(int argc, char *argv[])
 		}
 	}
 	nbrs = map_stack(pile_a, apply);
+	mediane = type_of_sort(nbrs, pile_a->length);
+	ft_printf("le type de sort est %d\n", mediane);
 	mediane = ft_find_median_value(nbrs, pile_a->length);
+	ft_printf("la mediane est %d\n", mediane);
 	while (pile_a->length)
 	{
 		data = (int *)pop(pile_a);
 		ft_printf("le nombre a pop : %d\n", *data);
 		free(data);
 	}
-	ft_printf("la mediane est %d\n", mediane);
 	free(pile_a);
 	return (0);
 }

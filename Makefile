@@ -6,7 +6,7 @@ INCLUDES = -I./includes
 #source
 SRCS_DIR = sources/
 SRCS = test.c stack.c stack_utils.c parse_args.c\
-		stats.c
+		heap_sort.c sort_utils.c
 
 SRCS_PREFIXED = $(addprefix $(SRCS_DIR), $(SRCS))
 
