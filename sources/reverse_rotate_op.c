@@ -6,10 +6,9 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 20:33:30 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/11 20:35:32 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/11 20:40:17 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/push_swap.h"
 
