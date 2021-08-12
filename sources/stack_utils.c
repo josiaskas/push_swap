@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 14:35:03 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/09 14:20:53 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/11 20:24:52 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	rotate(t_stack *stack)
 	if (stack == 0)
 		return (false);
 	if (stack->length <= 1)
-		return (true);
+		return (false);
 	if (stack->length == 2)
 		return (swap(stack));
 	first = stack->head;
