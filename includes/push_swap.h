@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:20:26 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/11 20:38:04 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/20 14:58:51 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,20 @@ bool	is_sorted_desc(int arr[], int n);
 int		type_of_sort(int arr[], int n);
 
 //helpers
+void	free_stack(t_stack *stack);
+void	free_array(void **array, size_t size);
 
-void	print_stacks(t_stack *stack_a, t_stack *stack_b);
+//help mapping the stack without changing the content (only for int array map)
+int do_nothing(void *content, int index);
+
+void print_stacks(t_stack *stack_a, t_stack *stack_b);
+
+// quicksort functions
+typedef struct s_partiton
+{
+	int	size;
+	int	current_mediane;
+}	t_partition;
+
+bool	move_all_to_b(t_stack *a, t_stack *b);
 #endif

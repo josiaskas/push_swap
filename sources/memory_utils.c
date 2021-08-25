@@ -1,37 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   memory_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/09 14:25:08 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/20 14:35:07 by jkasongo         ###   ########.fr       */
+/*   Created: 2021/08/20 14:22:27 by jkasongo          #+#    #+#             */
+/*   Updated: 2021/08/20 14:31:44 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char *argv[])
+void	free_array(void **array, size_t size)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		*data;
+	size_t	i;
 
-	stack_a = create_stack();
-	stack_b = create_stack();
-	if ((argc - 1) > 0)
+	if (!array)
+		return;
+	i = 0;
+	while (array[i])
 	{
-		if (!parse_args((argc - 1), argv, stack_a))
-		{
-			ft_putendl_fd("Error", STDERR_FILENO);
-			return (1);
-		}
+		free(array[i]);
+		i++;
 	}
-	print_stacks(stack_a, stack_b);
-	move_all_to_b(stack_a, stack_b);
-	print_stacks(stack_a, stack_b);
-	free_stack(stack_a);
-	free_stack(stack_b);
-	return (0);
+	free(array);
+	array = NULL;
+	return ;
+}
+
+void	free_stack(t_stack *stack)
+{
+	void *content;
+
+	if (!stack)
+		return;
+	while (stack->length)
+	{
+		content = pop(stack);
+		free(content);
+	}
+	free(stack);
+	stack = NULL;
+	return ;
 }

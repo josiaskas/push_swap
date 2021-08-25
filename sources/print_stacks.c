@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 19:21:09 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/11 20:09:31 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/19 22:40:43 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 		else if (i < stack_a->length)
 			ft_printf("%d	|	\n", content_a[i]);
 		else
-			ft_printf("%d	|	\n", content_b[i]);
+			ft_printf("	|	%d\n", content_b[i]);
 		i++;
 	}
 	ft_putendl_fd("---	|	---", 1);
