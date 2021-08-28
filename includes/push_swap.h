@@ -6,14 +6,13 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:20:26 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/20 14:58:51 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/28 12:37:07 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
-# include "stack.h"
 
 // size (number of args without the first one), args and the stack to push to
 bool	parse_args(int size, char *words[], t_stack *stack);
@@ -38,28 +37,19 @@ bool	do_rrr(t_stack *stack_a, t_stack *stack_b);
 // return the median of an array of int;
 int		ft_find_median_value(int arr[], int n);
 // sort a array with heap sort
-void	heapSort(int arr[], int n);
-
-bool	is_sorted_asc(int arr[], int n);
-bool	is_sorted_desc(int arr[], int n);
-// 1 if asc 2 if desc and 3 if not sorted
-int		type_of_sort(int arr[], int n);
-
-//helpers
-void	free_stack(t_stack *stack);
-void	free_array(void **array, size_t size);
+void	heap_sort(int arr[], int n);
 
 //help mapping the stack without changing the content (only for int array map)
 int do_nothing(void *content, int index);
-
 void print_stacks(t_stack *stack_a, t_stack *stack_b);
 
 // quicksort functions
 typedef struct s_partiton
 {
 	int	size;
-	int	current_mediane;
+	int	down;
+	int	current_median;
 }	t_partition;
 
-bool	move_all_to_b(t_stack *a, t_stack *b);
+t_stack	*partitionate(t_stack *a, t_stack *b);
 #endif

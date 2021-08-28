@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 14:25:08 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/20 14:35:07 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/28 11:30:54 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int		*data;
+	t_stack	*partitions;
 
 	stack_a = create_stack();
 	stack_b = create_stack();
@@ -29,9 +29,10 @@ int	main(int argc, char *argv[])
 		}
 	}
 	print_stacks(stack_a, stack_b);
-	move_all_to_b(stack_a, stack_b);
+	partitions = partitionate(stack_a, stack_b);
 	print_stacks(stack_a, stack_b);
 	free_stack(stack_a);
+	free_stack(partitions);
 	free_stack(stack_b);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:34:07 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/11 17:46:15 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/28 12:35:33 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	heapify(int *arr, int n, int i)
 	}
 }
 
-void	heapSort(int arr[], int n)
+void	heap_sort(int arr[], int n)
 {
 	int	i;
 
@@ -59,4 +59,23 @@ void	heapSort(int arr[], int n)
 		heapify(arr, i, 0);
 		i--;
 	}
+}
+
+int	ft_find_median_value(int arr[], int n)
+{
+	int	median;
+	int	a;
+	int	b;
+
+	heap_sort(arr, n);
+	median = 0;
+	if ((n % 2) != 0)
+		median = arr[((n - 1) / 2)];
+	else
+	{
+		a = arr[(n / 2) - 1];
+		b = arr[(n / 2)];
+		median = (a + b) / 2;
+	}
+	return (median);
 }
