@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:20:26 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/28 14:05:17 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/28 17:29:10 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,11 @@ void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 typedef struct s_partiton
 {
 	int	size;
+	int	min;
+	int	max;
 	int	down;
-	int	current_median;
 }	t_partition;
 
 t_stack	*partitionate(t_stack *a, t_stack *b);
+void	big_sort(t_stack *a, t_stack *b);
 #endif
