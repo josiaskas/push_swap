@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:18:19 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/09 16:27:44 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/28 13:46:30 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ bool	parse_and_push_int(char *s, t_stack *stack)
 	}
 	*content = (int)value;
 	if (ft_is_inside_stack(stack, *content))
+	{
+		free(content);
 		return (false);
+	}
 	push(stack, content);
 	return (true);
 }
@@ -76,7 +79,10 @@ bool	parse_unique_string(char *string, t_stack *stack)
 	while (i >= 0)
 	{
 		if (!parse_and_push_int(words[i], stack))
+		{
+			free_array((void **)words, size);
 			return (false);
+		}
 		free(words[i]);
 		i--;
 	}

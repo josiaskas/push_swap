@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:20:26 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/28 12:37:07 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/28 14:05:17 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int		ft_find_median_value(int arr[], int n);
 void	heap_sort(int arr[], int n);
 
 //help mapping the stack without changing the content (only for int array map)
-int do_nothing(void *content, int index);
-void print_stacks(t_stack *stack_a, t_stack *stack_b);
+int		do_nothing(void *content, int index);
+void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 
 // quicksort functions
 typedef struct s_partiton

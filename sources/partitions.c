@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 20:45:54 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/26 18:13:57 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/28 14:04:46 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	moving_to_b(t_stack *a, t_stack *b, int top_a)
 {
-	int *current_top_b;
+	int	*current_top_b;
 
 	current_top_b = &top_a;
 	if (b->length)
@@ -29,18 +29,22 @@ static void add_partition(t_stack *partions, int median, int size)
 {
 	t_partition *part;
 
+	part = NULL;
 	part = (t_partition *)malloc(sizeof(t_partition));
-	part->current_median = median;
-	part->size = size;
-	part->down = 0;
-	push(partions, part);
-	ft_printf("partition %d taille %d\n", partions->length, part->size);
+	if(part)
+	{
+		part->current_median = median;
+		part->size = size;
+		part->down = 0;
+		push(partions, part);
+	}
 }
 
 static bool	move_part_to_b(t_stack *partions, int median, int half, t_stack *a, t_stack *b)
 {
 	int	*current_top_a;
 
+	current_top_a = NULL;
 	add_partition(partions, median, half);
 	while (half)
 	{
@@ -64,6 +68,7 @@ t_stack	*partitionate(t_stack *a, t_stack *b)
 	int		median;
 
 	partions = create_stack();
+	arr_a = NULL;
 	while (a->length > 2)
 	{
 		arr_a = map_stack(a, do_nothing);
@@ -75,6 +80,7 @@ t_stack	*partitionate(t_stack *a, t_stack *b)
 			moving_to_b(a, b, arr_a[0]);
 		}
 		move_part_to_b(partions, median, half, a, b);
+		free(arr_a);
 	}
 	return (partions);
 }
