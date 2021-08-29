@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:34:07 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/28 12:35:33 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/29 13:39:06 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ int	ft_find_median_value(int arr[], int n)
 	heap_sort(arr, n);
 	median = 0;
 	if ((n % 2) != 0)
-		median = arr[((n - 1) / 2)];
+		median = arr[(n / 2)];
 	else
 	{
-		a = arr[(n / 2) - 1];
-		b = arr[(n / 2)];
+		a = arr[(n / 2)];
+		b = arr[(n / 2)+1];
 		median = (a + b) / 2;
 	}
 	return (median);

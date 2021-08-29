@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 20:45:54 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/28 17:27:17 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/29 13:45:35 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ static bool	move_part_to_b(t_stack *partions, int median, int half, t_stack *a, 
 	part_size = half;
 	while (half)
 	{
-			current_top_a = (int *)peak(a);
-			if (*current_top_a <= median)
-			{
-				moving_to_b(a, b, *current_top_a);
-				if (*current_top_a < min)
-					min = *current_top_a;
-				half--;
-			}
-			else
-				do_ra(a);
+		current_top_a = (int *)peak(a);
+		if (*current_top_a < median)
+		{
+			moving_to_b(a, b, *current_top_a);
+			if (*current_top_a < min)
+				min = *current_top_a;
+			half--;
+		}
+		else
+			do_ra(a);
 	}
 	add_partition(partions, median, min, part_size);
 	return (true);
@@ -82,10 +82,7 @@ t_stack	*partitionate(t_stack *a, t_stack *b)
 		half = (a->length) / 2;
 		median = ft_find_median_value(arr_a, a->length);
 		if (half == 0)
-		{
-			add_partition(partions, median, arr_a[0], 1);
-			moving_to_b(a, b, arr_a[0]);
-		}
+			half = 1;
 		move_part_to_b(partions, median, half, a, b);
 		free(arr_a);
 	}

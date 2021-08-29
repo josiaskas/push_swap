@@ -6,76 +6,81 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 14:12:23 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/28 18:32:44 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/29 16:18:37 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sorted_desc(t_stack *a)
+void sorted_desc(t_stack *a, t_stack *b)
 {
-	int	i;
-
-	i = a->length;
-	while (i > 1)
+	while (a->length)
+		do_pb(a,b);
+	while (b->length)
 	{
-		do_ra(a);
-		i--;
+		do_rrb(b);
+		do_pa(a,b);
 	}
 }
 
-void	work_on_partitiotion(t_stack *a, t_stack *b, t_partition *part)
+static void	work_on_partitiotion(t_stack *a, t_stack *b, t_partition *part)
 {
 	int	median;
 	int	*current_top_b;
 	int	half;
-	int *arr;
-	//int	*arr_sliced;
+	int	*arr;
+	int *arr_sliced;
 
-	ft_putendl_fd(">>>reordering a partition", 1);
+	if (part->size == 1)
+	{
+		do_pa(a,b);
+		part->size = 0;
+		return ;
+	}
 	while (part->size)
 	{
 		half = part->size / 2;
+		if (!half)
+			half = 1;
+		ft_printf(">>new half in partition : %d\n",half);
 		arr = map_stack(b, do_nothing);
-		//arr_sliced = ft_slice_int(arr, 0, part->size);
-		median = 2;
+		arr_sliced = ft_slice_int(arr, 0, part->size);
+		median = ft_find_median_value(arr_sliced, part->size);
 		free(arr);
-		//free(arr_sliced);
-		ft_printf("size %d", part->size);
+		free(arr_sliced);
 		while (half)
 		{
 			current_top_b = (int *)peak(b);
-			if (*current_top_b >= median)
+			ft_printf("top: %d mid:%d ", *current_top_b, median);
+			if ((*current_top_b > median))
 			{
-				ft_printf("mediane %d", median);
-				do_pa(a,b);
-				part->size--;
 				half--;
+				part->size--;
+				do_pa(a, b);
 			}
 			else
 			{
-				if (*current_top_b <= part->min)
+				do_rb(b);
+				part->down++;
+			}
+			if (part->down == part->size)
+			{
+				while (part->down > 0)
 				{
-					while (part->down)
-					{
-						do_rrb(b);
-						part->down--;
-					}
-				}
-				else
-				{
-					do_rb(b);
-					part->down++;
+					do_rrb(b);
+					part->down--;
 				}
 			}
+			arr = NULL;
+			arr_sliced = NULL;
 		}
+		part->max = median;
 	}
 }
 
 void	reorder_partitions(t_stack *a, t_stack *b, t_stack *partitions)
 {
 	int			*arr;
-	int			*p_arr;
 	t_partition	*part;
 
 	ft_putendl_fd(">>>start reordering", 1);
@@ -85,13 +90,10 @@ void	reorder_partitions(t_stack *a, t_stack *b, t_stack *partitions)
 	free(arr);
 	while (partitions->length)
 	{
-		ft_putendl_fd(">>>loop partitions start<<", 1);
-		arr = map_stack(b, do_nothing);
+		ft_putendl_fd(">>>poping partition<<\n\n", 1);
 		part = (t_partition *)pop(partitions);
-		p_arr = ft_slice_int(arr, 0, part->size);
+		(void)b;
 		work_on_partitiotion(a, b, part);
-		free(arr);
-		free(p_arr);
 	}
 }
 
@@ -108,11 +110,11 @@ void	big_sort(t_stack *a, t_stack *b)
 		return ;
 	if (is_sorted == 2)
 	{
-		sorted_desc(a);
+		sorted_desc(a, b);
 		return ;
 	}
 	partitions = NULL;
 	partitions = partitionate(a, b);
-	//reorder_partitions(a, b, partitions);
+	reorder_partitions(a, b, partitions);
 	free_stack(partitions);
 }
