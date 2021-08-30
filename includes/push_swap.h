@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:20:26 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/28 17:29:10 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/30 12:28:09 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,8 @@ typedef struct s_partiton
 
 t_stack	*partitionate(t_stack *a, t_stack *b);
 void	big_sort(t_stack *a, t_stack *b);
+
+// particular
+void	big_sort_it_asc(t_stack *a, t_stack *b);
+void	small_sort_two(t_stack *a);
 #endif

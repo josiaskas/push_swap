@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 20:45:54 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/29 13:45:35 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/30 12:12:16 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static bool	moving_to_b(t_stack *a, t_stack *b, int top_a)
 	if (b->length)
 		current_top_b = (int *)peak(b);
 	do_pb(a, b);
-	if (top_a < *current_top_b)
-		do_sb(b);
+	// if (top_a < *current_top_b)
+	// 	do_sb(b);
 	return (true);
 }
 

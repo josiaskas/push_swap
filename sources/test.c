@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 14:25:08 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/28 17:30:49 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/30 12:30:33 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ int	main(int argc, char *argv[])
 			return (1);
 		}
 	}
-	print_stacks(stack_a, stack_b);
-	//partitions = partitionate(stack_a, stack_b);
-	big_sort(stack_a,stack_b);
-	print_stacks(stack_a, stack_b);
+	//print_stacks(stack_a, stack_b);
+	if (stack_a->length == 2)
+		small_sort_two(stack_a);
+	else
+		big_sort(stack_a,stack_b);
+	//print_stacks(stack_a, stack_b);
 	free_them(stack_a, stack_b, partitions);
 	return (0);
 }
