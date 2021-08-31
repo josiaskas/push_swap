@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   big_sort.c                                         :+:      :+:    :+:   */
+/*   push_back.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 14:12:23 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/31 05:03:41 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/31 15:23:12 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static void move_one(t_stack *a, t_stack *b)
 	}
 }
 
-static void	reorder_partitions(t_stack *a, t_stack *b)
+void	reorder_partitions(t_stack *a, t_stack *b)
 {
 	int	*arr_a;
 
@@ -116,27 +116,4 @@ static void	reorder_partitions(t_stack *a, t_stack *b)
 		move_one(a,b);
 		//ft_printf("\n>>>>finished moving one\n");
 	}
-}
-
-void	big_sort(t_stack *a, t_stack *b)
-{
-	int		*arr_a;
-	int		is_sorted;
-
-	while (true)
-	{
-		arr_a = map_stack(a, do_nothing);
-		is_sorted = type_of_sort(arr_a, a->length);
-		free(arr_a);
-		if (is_sorted == 1)
-			return;
-		if (is_sorted == 2)
-		{
-			big_sort_it_asc(a, b);
-			return;
-		}
-		partitionate(a, b);
-		reorder_partitions(a, b);
-	}
-	return ;
 }
