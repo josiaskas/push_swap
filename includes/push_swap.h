@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:20:26 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/30 12:28:09 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/31 04:58:42 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,8 @@ void	heap_sort(int arr[], int n);
 int		do_nothing(void *content, int index);
 void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 
-// quicksort functions
-typedef struct s_partiton
-{
-	int	size;
-	int	min;
-	int	max;
-	int	down;
-}	t_partition;
 
-t_stack	*partitionate(t_stack *a, t_stack *b);
+void	partitionate(t_stack *a, t_stack *b);
 void	big_sort(t_stack *a, t_stack *b);
 
 // particular
