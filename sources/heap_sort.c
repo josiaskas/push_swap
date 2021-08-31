@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:34:07 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/29 13:39:06 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/31 00:11:11 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	ft_find_median_value(int arr[], int n)
 		a = arr[(n / 2)];
 		b = arr[(n / 2)+1];
 		median = (a + b) / 2;
+		//ft_printf("a:%d b:%d mediane = %d n:%d\n", a, b, median, n);
 	}
 	return (median);
 }

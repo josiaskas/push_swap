@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:18:19 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/30 13:04:10 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/08/30 21:02:09 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ bool	parse_and_push_int(char *s, t_stack *stack)
 	content = (int *)malloc(sizeof(int));
 	if (!content)
 		return (false);
+	value = ft_atol(s);
 	if (s[0] == '-' || s[0] == '+')
 		s++;
-	value = ft_atol(s);
 	if (value > MAX_INT_VALUE || value < MIN_INT_VALUE)
 		return (false);
 	i = 0;
