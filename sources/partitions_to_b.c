@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   partitions_by_chunks.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 20:45:54 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/09/01 23:52:42 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/02 02:34:06 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,22 @@ void	move_up_to_n(t_stack *a, t_stack *b, int max)
 			do_pb(a, b);
 		}
 	}
+}
+
+void	partitionate_mediane(t_stack *a, t_stack *b)
+{
+	int	*arr_a;
+	int	median;
+
+	arr_a = NULL;
+	while (a->length > 2)
+	{
+		arr_a = map_stack(a, do_nothing);
+		median = ft_find_median_value(arr_a, a->length);
+		move_up_to_n(a, b, median);
+		free(arr_a);
+	}
+	return ;
 }
 
 void	partionate_in_n_chunks(t_stack *a, t_stack *b, int n)

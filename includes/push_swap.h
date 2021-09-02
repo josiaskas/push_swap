@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:20:26 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/09/01 23:47:29 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/02 02:32:03 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ bool	do_rrr(t_stack *stack_a, t_stack *stack_b);
 
 // return the median of an array of int;
 int		ft_find_median_value(int arr[], int n);
-// sort an array with heap sort
+
 void	heap_sort(int arr[], int n);
 // help mapping the stack without changing the content (only for int array map)
 int		do_nothing(void *content, int index);
@@ -44,6 +44,7 @@ int		do_nothing(void *content, int index);
 void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 // partitions with mediane
 void	partitionate(t_stack *a, t_stack *b);
+void	partitionate_mediane(t_stack *a, t_stack *b);
 
 int		from_bottom_c(t_stack *a, int max);
 int		from_top_c(t_stack *a, int max);

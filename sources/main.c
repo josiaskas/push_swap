@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 14:25:08 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/09/02 00:53:08 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/02 02:49:03 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	free_them(t_stack *a, t_stack *b)
 
 static void	super_big(t_stack *a, t_stack *b)
 {
-	partitionate(a, b);
-	partionate_in_n_chunks_b(a, b, 22);
+	partitionate_mediane(a, b);
+	partionate_in_n_chunks_b(a, b, 17);
 	partionate_in_n_chunks(a, b, 42);
 }
 
@@ -42,12 +42,12 @@ void	big_sort(t_stack *a, t_stack *b)
 		return ;
 	}
 	if (a->length <= 120)
-		partitionate(a, b);
+		partitionate_mediane(a, b);
 	else if (a->length <= 520)
 	{
-		partitionate(a, b);
+		partitionate_mediane(a, b);
 		partionate_in_n_chunks_b(a, b, 11);
-		partionate_in_n_chunks(a, b, 23);
+		partionate_in_n_chunks(a, b, 55);
 	}
 	else
 		super_big(a, b);

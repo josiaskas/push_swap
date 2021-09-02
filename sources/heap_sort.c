@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heap_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:34:07 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/09/01 23:56:14 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/02 01:47:35 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,23 @@ int	ft_find_median_value(int arr[], int n)
 		median = (a + b) / 2;
 	}
 	return (median);
+}
+
+int	ft_find_quart_value(int arr[], int n)
+{
+	int	quart;
+	int	a;
+	int	b;
+
+	heap_sort(arr, n);
+	quart = 0;
+	if ((n % 2) != 0)
+		quart = arr[(n / 4)];
+	else
+	{
+		a = arr[(n / 4)];
+		b = arr[(n / 4) + 1];
+		quart = (a + b) / 2;
+	}
+	return (quart);
 }
