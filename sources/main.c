@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 14:25:08 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/31 19:43:51 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/02 00:53:08 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,40 @@ void	free_them(t_stack *a, t_stack *b)
 	free_stack(b);
 }
 
+static void	super_big(t_stack *a, t_stack *b)
+{
+	partitionate(a, b);
+	partionate_in_n_chunks_b(a, b, 22);
+	partionate_in_n_chunks(a, b, 42);
+}
+
 void	big_sort(t_stack *a, t_stack *b)
 {
-	int *arr_a;
-	int is_sorted;
+	int	*arr_a;
+	int	is_sorted;
 
 	arr_a = map_stack(a, do_nothing);
 	is_sorted = type_of_sort(arr_a, a->length);
 	free(arr_a);
 	if (is_sorted == 1)
-		return;
+		return ;
 	if (is_sorted == 2)
 	{
 		big_sort_it_asc(a, b);
-		return;
+		return ;
 	}
-	if (a->length <= 100)
+	if (a->length <= 120)
 		partitionate(a, b);
-	else if (a->length <= 300)
-		partionate_in_n_chunks(a, b, 8);
-	else if (a->length <= 500)
-		partionate_in_n_chunks(a, b, 12);
+	else if (a->length <= 520)
+	{
+		partitionate(a, b);
+		partionate_in_n_chunks_b(a, b, 11);
+		partionate_in_n_chunks(a, b, 23);
+	}
 	else
-		partionate_in_n_chunks(a, b, (a->length / 50));
+		super_big(a, b);
 	reorder_partitions(a, b);
-	return;
+	return ;
 }
 
 void	sort_selector(t_stack *a, t_stack *b)
@@ -59,7 +68,7 @@ void	sort_selector(t_stack *a, t_stack *b)
 	else if (a->length == 5)
 		small_sort5(a, b);
 	else
-		big_sort(a,b);
+		big_sort(a, b);
 }
 
 int	main(int argc, char *argv[])

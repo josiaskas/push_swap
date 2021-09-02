@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   partitions_by_mediane.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 20:45:54 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/31 14:43:37 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/01 22:08:57 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
 
 static bool	move_part_to_b(int median, int half, t_stack *a, t_stack *b)
 {

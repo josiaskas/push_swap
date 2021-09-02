@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_back.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 14:12:23 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/31 15:23:12 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/01 23:42:37 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	from_top_count(t_stack *b)
 	return (i);
 }
 
-static int from_bottom_count(t_stack *b)
+static int	from_bottom_count(t_stack *b)
 {
 	int	*arr;
 	int	i;
@@ -75,14 +75,13 @@ static int from_bottom_count(t_stack *b)
 	return (b->length - i);
 }
 
-static void move_one(t_stack *a, t_stack *b)
+static void	move_one(t_stack *a, t_stack *b)
 {
 	int		top_count;
 	int		bottom_count;
 
 	top_count = from_top_count(b);
 	bottom_count = from_bottom_count(b);
-	//ft_printf("top :%d bottom:%d taille:%d\n", top_count, bottom_count, b->length);
 	if (top_count <= bottom_count)
 	{
 		while (top_count)
@@ -90,7 +89,7 @@ static void move_one(t_stack *a, t_stack *b)
 			do_rb(b);
 			top_count--;
 		}
-		push_to_a(a,b);
+		push_to_a(a, b);
 	}
 	else
 	{
@@ -112,8 +111,5 @@ void	reorder_partitions(t_stack *a, t_stack *b)
 		do_sa(a);
 	free(arr_a);
 	while (b->length)
-	{
-		move_one(a,b);
-		//ft_printf("\n>>>>finished moving one\n");
-	}
+		move_one(a, b);
 }

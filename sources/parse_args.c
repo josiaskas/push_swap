@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:18:19 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/30 21:02:09 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/02 00:21:34 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,11 @@ bool	ft_is_inside_stack(t_stack *stack, int nbr)
 	return (false);
 }
 
-bool	parse_and_push_int(char *s, t_stack *stack)
+static bool	parse_int(char *s, int *content)
 {
 	long	value;
-	int		*content;
 	int		i;
 
-	content = (int *)malloc(sizeof(int));
-	if (!content)
-		return (false);
 	value = ft_atol(s);
 	if (s[0] == '-' || s[0] == '+')
 		s++;
@@ -53,6 +49,21 @@ bool	parse_and_push_int(char *s, t_stack *stack)
 		i++;
 	}
 	*content = (int)value;
+	return (true);
+}
+
+bool	parse_and_push_int(char *s, t_stack *stack)
+{
+	int		*content;
+
+	content = (int *)malloc(sizeof(int));
+	if (!content)
+		return (false);
+	if (!parse_int(s, content))
+	{
+		free(content);
+		return (false);
+	}
 	if (ft_is_inside_stack(stack, *content))
 	{
 		free(content);
@@ -80,7 +91,7 @@ bool	parse_unique_string(char *string, t_stack *stack)
 	{
 		if (!parse_and_push_int(words[i], stack))
 		{
-			free_array((void**)words, size);
+			free_array((void **)words, size);
 			return (false);
 		}
 		i--;

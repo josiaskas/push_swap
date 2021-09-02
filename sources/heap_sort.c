@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heap_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:34:07 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/31 00:11:11 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/01 23:56:14 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,8 @@ int	ft_find_median_value(int arr[], int n)
 	else
 	{
 		a = arr[(n / 2)];
-		b = arr[(n / 2)+1];
+		b = arr[(n / 2) + 1];
 		median = (a + b) / 2;
-		//ft_printf("a:%d b:%d mediane = %d n:%d\n", a, b, median, n);
 	}
 	return (median);
 }

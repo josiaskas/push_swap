@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:20:26 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/08/31 19:41:08 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/01 23:47:29 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,13 @@ int		do_nothing(void *content, int index);
 void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 // partitions with mediane
 void	partitionate(t_stack *a, t_stack *b);
+
+int		from_bottom_c(t_stack *a, int max);
+int		from_top_c(t_stack *a, int max);
+
 // partitions with each chunks max
 void	partionate_in_n_chunks(t_stack *a, t_stack *b, int n);
+void	partionate_in_n_chunks_b(t_stack *a, t_stack *b, int n);
 //push back all data in order
 void	reorder_partitions(t_stack *a, t_stack *b);
 
