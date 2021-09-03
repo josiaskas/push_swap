@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 14:25:08 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/09/02 02:49:03 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/02 21:55:02 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,16 @@ void	free_them(t_stack *a, t_stack *b)
 static void	super_big(t_stack *a, t_stack *b)
 {
 	partitionate_mediane(a, b);
-	partionate_in_n_chunks_b(a, b, 17);
-	partionate_in_n_chunks(a, b, 42);
+	partionate_in_n_chunks_b(a, b, 33);
+	partionate_in_n_chunks(a, b, 55);
 }
 
 void	big_sort(t_stack *a, t_stack *b)
 {
-	int	*arr_a;
-	int	is_sorted;
-
-	arr_a = map_stack(a, do_nothing);
-	is_sorted = type_of_sort(arr_a, a->length);
-	free(arr_a);
-	if (is_sorted == 1)
-		return ;
-	if (is_sorted == 2)
-	{
-		big_sort_it_asc(a, b);
-		return ;
-	}
-	if (a->length <= 120)
+	if (a->length <= 50)
 		partitionate_mediane(a, b);
+	if (a->length <= 120)
+		partitionate_quarter(a, b);
 	else if (a->length <= 520)
 	{
 		partitionate_mediane(a, b);
@@ -57,6 +46,9 @@ void	big_sort(t_stack *a, t_stack *b)
 
 void	sort_selector(t_stack *a, t_stack *b)
 {
+	int	*arr_a;
+	int	is_sorted;
+
 	if (a->length == 1)
 		return ;
 	else if (a->length == 2)
@@ -68,7 +60,17 @@ void	sort_selector(t_stack *a, t_stack *b)
 	else if (a->length == 5)
 		small_sort5(a, b);
 	else
-		big_sort(a, b);
+	{
+		arr_a = map_stack(a, do_nothing);
+		is_sorted = type_of_sort(arr_a, a->length);
+		free(arr_a);
+		if (is_sorted == 1)
+			return ;
+		else if (is_sorted == 2)
+			big_sort_it_asc(a, b);
+		else
+			big_sort(a, b);
+	}
 }
 
 int	main(int argc, char *argv[])

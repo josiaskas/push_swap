@@ -6,28 +6,11 @@
 /*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 14:12:23 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/09/01 23:42:37 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/02 20:47:31 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static void	push_to_a(t_stack *a, t_stack *b)
-{
-	int	*current_b;
-	int	*current_a;
-
-	current_b = (int *)peak(b);
-	current_a = (int *)peak(a);
-	if ((current_b) && (*current_a < *current_b))
-	{
-		do_ra(a);
-		do_pa(a, b);
-		do_rra(a);
-	}
-	else
-		do_pa(a, b);
-}
 
 static int	from_top_count(t_stack *b)
 {
@@ -89,7 +72,7 @@ static void	move_one(t_stack *a, t_stack *b)
 			do_rb(b);
 			top_count--;
 		}
-		push_to_a(a, b);
+		do_pa(a, b);
 	}
 	else
 	{
@@ -98,7 +81,7 @@ static void	move_one(t_stack *a, t_stack *b)
 			do_rrb(b);
 			bottom_count--;
 		}
-		push_to_a(a, b);
+		do_pa(a, b);
 	}
 }
 

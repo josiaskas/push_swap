@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   partitions_by_chunks.c                             :+:      :+:    :+:   */
+/*   partitions_op_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 20:45:54 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/09/02 02:34:06 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/02 22:03:02 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	from_bottom_c(t_stack *a, int max)
 	return (a->length - i);
 }
 
-void	move_up_to_n(t_stack *a, t_stack *b, int max)
+void	move_to_b(t_stack *a, t_stack *b, int max)
 {
 	int	top_count;
 	int	bottom_count;
@@ -78,11 +78,13 @@ void	partitionate_mediane(t_stack *a, t_stack *b)
 	int	median;
 
 	arr_a = NULL;
-	while (a->length > 2)
+	while (a->length)
 	{
+		if (a->length == 2)
+			break ;
 		arr_a = map_stack(a, do_nothing);
 		median = ft_find_median_value(arr_a, a->length);
-		move_up_to_n(a, b, median);
+		move_to_b(a, b, median);
 		free(arr_a);
 	}
 	return ;
@@ -109,7 +111,7 @@ void	partionate_in_n_chunks(t_stack *a, t_stack *b, int n)
 	i = 0;
 	while (i < n)
 	{
-		move_up_to_n(a, b, chunks[i]);
+		move_to_b(a, b, chunks[i]);
 		i++;
 	}
 	free(arr);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 18:20:26 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/09/02 02:32:03 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/02 20:56:23 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,12 @@ int		do_nothing(void *content, int index);
 // print two stacks on fd 1
 void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 // partitions with mediane
-void	partitionate(t_stack *a, t_stack *b);
 void	partitionate_mediane(t_stack *a, t_stack *b);
+void	partitionate_quarter(t_stack *a, t_stack *b);
+void	partitionate_quarter_to_a(t_stack *a, t_stack *b);
 
+void	move_to_a(t_stack *a, t_stack *b, int max);
+void	move_to_b(t_stack *a, t_stack *b, int max);
 int		from_bottom_c(t_stack *a, int max);
 int		from_top_c(t_stack *a, int max);
 

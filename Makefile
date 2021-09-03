@@ -7,7 +7,7 @@ INCLUDES = -I./includes
 SRCS_DIR = sources/
 SRCS = main.c parse_args.c heap_sort.c print_stacks.c \
 	swap_op.c rotate_op.c reverse_rotate_op.c\
-	partitions_to_a.c partitions_to_b.c push_back.c\
+	partitions_op.c partitions_op_2.c push_back.c\
 	particular_sort.c sort5.c\
 
 SRCS_PREFIXED = $(addprefix $(SRCS_DIR), $(SRCS))
