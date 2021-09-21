@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_back.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 14:12:23 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/09/02 20:47:31 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/21 17:25:06 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,19 @@ static void	move_one(t_stack *a, t_stack *b)
 	{
 		while (top_count)
 		{
-			do_rb(b);
+			do_rb(b, false);
 			top_count--;
 		}
-		do_pa(a, b);
+		do_pa(a, b, false);
 	}
 	else
 	{
 		while (bottom_count)
 		{
-			do_rrb(b);
+			do_rrb(b, false);
 			bottom_count--;
 		}
-		do_pa(a, b);
+		do_pa(a, b, false);
 	}
 }
 
@@ -91,7 +91,7 @@ void	reorder_partitions(t_stack *a, t_stack *b)
 
 	arr_a = map_stack(a, do_nothing);
 	if (type_of_sort(arr_a, a->length) != 1)
-		do_sa(a);
+		do_sa(a, false);
 	free(arr_a);
 	while (b->length)
 		move_one(a, b);

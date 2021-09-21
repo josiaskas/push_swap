@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 14:25:08 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/09/02 21:55:02 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/21 17:17:43 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,12 @@ void	sort_selector(t_stack *a, t_stack *b)
 	int	*arr_a;
 	int	is_sorted;
 
-	if (a->length == 1)
+	arr_a = map_stack(a, do_nothing);
+	is_sorted = type_of_sort(arr_a, a->length);
+	free(arr_a);
+	if (is_sorted == 1)
+		return ;
+	else if (a->length == 1)
 		return ;
 	else if (a->length == 2)
 		small_sort_two(a);
@@ -61,12 +66,7 @@ void	sort_selector(t_stack *a, t_stack *b)
 		small_sort5(a, b);
 	else
 	{
-		arr_a = map_stack(a, do_nothing);
-		is_sorted = type_of_sort(arr_a, a->length);
-		free(arr_a);
-		if (is_sorted == 1)
-			return ;
-		else if (is_sorted == 2)
+		if (is_sorted == 2)
 			big_sort_it_asc(a, b);
 		else
 			big_sort(a, b);

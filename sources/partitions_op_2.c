@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   partitions_op_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkasongo <jkasongo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 20:45:54 by jkasongo          #+#    #+#             */
-/*   Updated: 2021/09/02 22:03:02 by jkasongo         ###   ########.fr       */
+/*   Updated: 2021/09/21 17:21:34 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ void	move_to_b(t_stack *a, t_stack *b, int max)
 		if (top_count <= bottom_count)
 		{
 			while (top_count--)
-				do_ra(a);
-			do_pb(a, b);
+				do_ra(a, false);
+			do_pb(a, b, false);
 		}
 		else
 		{
 			while (bottom_count--)
-				do_rra(a);
-			do_pb(a, b);
+				do_rra(a, false);
+			do_pb(a, b, false);
 		}
 	}
 }

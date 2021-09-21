@@ -20,28 +20,30 @@ all : $(NAME)
 $(NAME): $(OBJS)
 	@$(MAKE) re -C ./libft
 	@$(CC) $(CFLAGS) $(OBJS) -L./libft -lft -o $(NAME)
-	@echo $(NAME) est fait
+	@echo $(NAME) est construit
 
 clean :
-	$(MAKE) clean -C ./libft
-	rm -rf $(OBJS)
+	@$(MAKE) clean -C ./libft
+	@rm -rf $(OBJS)
+	@echo cleaning
 
 fclean : clean
-	$(MAKE) fclean -C ./libft
-	rm -rf $(NAME)
+	@$(MAKE) fclean -C ./libft
+	@rm -rf $(NAME)
+	@echo "full clean"
 
 re : fclean all
 
 test3:all
-	python3 pyviz.py `ruby -e "puts (1..3).to_a.shuffle.join(' ')"`
+	ruby -e "puts (1..3).to_a.shuffle.join(' ')" | xargs ./push_swap | wc -l
 test5:all
-	python3 pyviz.py `ruby -e "puts (1..5).to_a.shuffle.join(' ')"`
+	ruby -e "puts (1..5).to_a.shuffle.join(' ')" | xargs ./push_swap | wc -l
 test100:all
-	python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
+	ruby -e "puts (1..100).to_a.shuffle.join(' ')" | xargs ./push_swap | wc -l
 test400:all
-	python3 pyviz.py `ruby -e "puts (-200..200).to_a.shuffle.join(' ')"`
+	ruby -e "puts (1..400).to_a.shuffle.join(' ')" | xargs ./push_swap | wc -l
 test500:all
-	python3 pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
+	ruby -e "puts (1..500).to_a.shuffle.join(' ')" | xargs ./push_swap | wc -l
 help	:
 	@echo "all $(NAME) clean fclean re \033[0;32m test5 test3 test100 test400 test500 help\033[0;39m"
 
